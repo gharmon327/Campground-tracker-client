@@ -9,6 +9,64 @@
     <title>Campground Tracker</title>
 </head>
 <body>
+
+<!-- Container for sign-up and sign-in form -->
+<div id="auth-container" class="container">
+    <div class="row">
+    <div class="col">
+            <h2>New User? Sign Up</h2>
+            <form id="sign-up-form-container">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                    <input type="password" class="form-control" id="inputPassword" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col">
+        <h2>Returning User? Sign In</h2>
+            <form id="sign-in-form-container">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" placeholder="name@example.com"
+                        name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <main id="index-container" class="hide">
+    <section id="campground">
+        <h2>Campground</h2>
+        <div id="index-campground-container"></div>
+        
+        <form id="create-campground-form">
+            <input type="text" name="name" placeholder="Name"/>
+            <input type="text" name="location" placeholder="Location (City, State)"/>
+            <input type="number" name="sites" placeholder="Number of Sites"/>
+            <input type="submit" value="Create Campground" />
+        </form>
+    </section>
     
+    <section id="campsite">
+        <h2>Campsite</h2>
+        <div id="index-campsite-container"></div> 
+    </section>
+    </main>
+
+    <div id="show-campground-container"></div>
+    <div id="show-campsite-container"></div>
+    <div id="message-container"></div>
+    <div id="message-campsite-container"></div>
 </body>
 </html>
