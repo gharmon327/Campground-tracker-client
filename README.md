@@ -18,12 +18,15 @@
 - As a user, I want to check out of campsite
 - As a user, I want to be able to check the status of all campsites
 - As a user, I want to view mulitple campgrounds
-- As an employee, I want to be able to check the status of all campsites
 - As an employee, I want to check user in a campsite
 - As an employee, I want to check user out of campsite
-- As an employee, I want to be able to set campground
+- As an employee, I want to be able to create a campground
+- As an employee, I want to be able to update a campground
+- As an employee, I want to be able to delete a campground
+- As an employee, I want to be able to see the status of campground
 - As an employee, I want to be able to sign up
 - As an employee, I want to be able to sign in
+
 
 **Version 2**
 - As a user, I want to make a reservation
