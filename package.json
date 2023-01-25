@@ -1,0 +1,20 @@
+{
+  "name": "campground-tracker-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gharmon327/Campground-tracker-client.git"
+  },
+  "keywords": [],
+  "author": "Greg Harmon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gharmon327/Campground-tracker-client/issues"
+  },
+  "homepage": "https://github.com/gharmon327/Campground-tracker-client#readme"
+}

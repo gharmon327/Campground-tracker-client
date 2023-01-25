@@ -1,5 +1,8 @@
 # Campground-tracker-client
 
+## Description
+- The Campground tracker is an app to keep track of the status of the campgrounds campsites. When guest arrive or depart they can check themselves in or when employees see guest arriving or departing they can check them in or out. Also Employees can create, update, delete and read different campgrounds. 
+
 ## Wireframe
 ![Campground Wireframe](images/Project%202%20(1).png)
 
