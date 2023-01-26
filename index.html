@@ -43,11 +43,13 @@
             </form>
         </div>
     </div>
+    <img src="https://northeastohiofamilyfun.com/wp-content/uploads/2020/05/Campgrounds-in-Ohio.jpg" alt="Campground">
 </div>
 
-    <main id="index-container" class="hide">
-    <section id="campground">
-        <h2>Campground</h2>
+    <!-- <main id="index-container" class="hide"> -->
+    <section id="campground-container" class="hide">
+        <h2>Select Campground:</h2>
+        <img src="https://www.fs.usda.gov/Internet/FSE_MEDIA/fseprd969996.png" alt="map">
         <div id="index-campground-container"></div>
         
         <form id="create-campground-form">
@@ -56,16 +58,18 @@
             <input type="number" name="sites" placeholder="Number of Sites"/>
             <input type="submit" value="Create Campground" />
         </form>
+        
     </section>
     
-    <section id="campsite">
+    <section id="campsite-container" class="hide">
         <h2>Campsite</h2>
+        <img src="https://www.fs.usda.gov/Internet/FSE_MEDIA/fseprd923724.jpg" alt="Campsite" id="tent">
         <div id="index-campsite-container"></div> 
     </section>
-    </main>
+    <!-- </main> -->
 
-    <div id="show-campground-container"></div>
-    <div id="show-campsite-container"></div>
+    <div id="show-campground-container" class="hide"></div>
+    <div id="show-campsite-container" class="hide"></div>
     <div id="message-container"></div>
     <div id="message-campsite-container"></div>
 </body>

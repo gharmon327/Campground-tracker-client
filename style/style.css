@@ -1,3 +1,60 @@
 .hide {
     display: none;
 }
+
+body {
+    background-color: lightgray
+}
+
+h2 {
+    color: rgb(89,113,78);
+}
+
+h3 {
+    color: rgb(114,93,67);
+}
+/* #auth-container {
+    display: flex;
+    justify-content: center;
+} */
+
+/* .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 33%;
+    flex-direction: column;
+}
+image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;  
+} */
+
+#campground-container {
+    border: 2px solid black;
+    padding-left: 10px ;
+    padding-bottom: 10px;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+/* #campsite-container {
+    border: 2px solid black;
+    padding-left: 10px ;
+    padding-bottom: 10px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+} */
+
+button {
+    color: blue;
+}
+
+#tent {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}

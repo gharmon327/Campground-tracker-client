@@ -35,6 +35,10 @@ const indexCampsiteContainer = document.querySelector('#index-campsite-container
 const showCampsiteContainer = document.querySelector('#show-campsite-container')
 const signUpContainer = document.querySelector('#sign-up-form-container')
 const signInContainer = document.querySelector('#sign-in-form-container')
+const campsiteContainer = document.querySelector('#campsite-container')
+const indexContainer = document.querySelector('#index-container')
+const campgroundContainer = document.querySelector('#campground-container')
+
 // const createCampsiteForm = document.querySelector('#create-campsite-form')
 
 
@@ -44,13 +48,13 @@ const signInContainer = document.querySelector('#sign-in-form-container')
 
 
 // Campground actions
-indexCampgrounds()
-    .then(res => res.json())
-    .then(res => {
-        console.log(res)
-        onIndexCampgroundSuccess(res.campgrounds)
-    })
-    .catch(onFailure)
+// indexCampgrounds()
+//     .then(res => res.json())
+//     .then(res => {
+//         console.log(res)
+//         onIndexCampgroundSuccess(res.campgrounds)
+//     })
+//     .catch(onFailure)
 
 createCampgroundForm.addEventListener('submit', (event) => {
     event.preventDefault()
@@ -84,6 +88,8 @@ indexCampgroundsContainer.addEventListener('click', (event) => {
 
 showCampgroundContainer.addEventListener('submit', (event) => {
 	event.preventDefault()
+    // indexContainer.classList.remove('hide')
+    
 	const id = event.target.getAttribute('data-id')
 	const campgroundData = {
 		campground: {
@@ -92,13 +98,17 @@ showCampgroundContainer.addEventListener('submit', (event) => {
 			sites: event.target['sites'].value
 		},
 	}
+
 	updateCampground(campgroundData, id)
 		.then(onUpdateCampgroundSuccess)
 		.catch(onFailure)
+    
 })
 
 showCampgroundContainer.addEventListener('click', (event) => {
 	const id = event.target.getAttribute('data-id')
+    campsiteContainer.classList.remove('hide')
+
 
 	if (!id) return
 
@@ -106,6 +116,7 @@ showCampgroundContainer.addEventListener('click', (event) => {
 		.then(onDeleteCampgroundSuccess)
 		.catch(onFailure)
 })
+
 
 // User Actions
 signUpContainer.addEventListener('submit', (event) => {
@@ -142,13 +153,13 @@ signInContainer.addEventListener('submit', (event) => {
 
 
 // Campsite Actions
-indexCampsite()
-    .then(res => res.json())
-    .then(res => {
-        console.log(res)
-        onIndexCampsiteSuccess(res.campsites)
-    })
-    .catch(onFailure)
+// indexCampsite()
+//     .then(res => res.json())
+//     .then(res => {
+//         console.log(res)
+//         onIndexCampsiteSuccess(res.campsites)
+//     })
+//     .catch(onFailure)
 
 // createCampsiteForm.addEventListener('submit', (event) => {
 //     event.preventDefault()
