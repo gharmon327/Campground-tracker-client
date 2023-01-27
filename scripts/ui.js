@@ -59,16 +59,15 @@ export const onShowCampgroundSuccess = (campground) => {
 	div.innerHTML = `
         <div class="row">
             <div class="col">
-                <h2>Campground</h2>
+                <h2 id="Campground-title">Campground Details</h2>
                 <h3>Campground Name:</h3>
                 <h4>${campground.name}</h4>
                 <h3>Location:</h3>
                 <h4>${campground.location}</h4>
                 <h3>Number of Campsites:</h3>
                 <h4>${campground.sites}</h4>
-                <p>${campground._id}</p>
             </div>
-            <div class="col">
+            <div id="update-campground-form" class="hide">
                 <form data-id="${campground._id}">
                     <input class="form-control"class="form-control" type="text" name="name" value="${campground.name}">
                     <input class="form-control" type="text" name="location" value="${campground.location}">
@@ -105,6 +104,7 @@ export const onSignUpSuccess = () => {
 export const onSignInSuccess = (userToken) => {
     messageContainer.innerHTML = ''
     store.userToken = userToken
+    console.log(userToken)
     authContainer.classList.add('hide')
     // indexContainer.classList.remove('hide')
     // campsiteContainer.classList.remove('hide')
@@ -116,12 +116,13 @@ export const onSignInSuccess = (userToken) => {
 export const onIndexCampsiteSuccess = (campsites) => {
     campsites.forEach((campsite) => {
         const div = document.createElement('div')
+        div.classList.add('campsite')
         div.innerHTML = `
         <h3>Site Number:</h3>
         <h4>${campsite.siteNumber}</h4>
         <h3>Available:</h3>
         <h4>${campsite.isOccupied}</h4>
-        <button data-id-campsite="${campsite._id}">Show Campsite</button>
+        <button data-id-campsite="${campsite._id}">Check In</button>
         `
         // if(`${campsite.isOccupied}` === true){
         //     div.innerText = 'Yes'
@@ -148,7 +149,7 @@ export const onShowCampsiteSuccess = (campsite) => {
     <h4>${campsite.siteNumber}</h4>
     <h3>Available:</h3>
     <h4>${campsite.isOccupied}</h4>
-    <p>${campsite._id}</p>
+    
 
     <form data-id-campsite="${campsite._id}">
         <input type="text" name="siteNumber" value="${campsite.siteNumber}" />

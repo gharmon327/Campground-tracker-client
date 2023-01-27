@@ -14,6 +14,7 @@
 <div id="auth-container" class="container">
     <div class="row">
     <div class="col">
+            <h1>Welcome to the Campground Tracker App</h1>
             <h2>New User? Sign Up</h2>
             <form id="sign-up-form-container">
                 <div class="mb-3">
@@ -55,14 +56,14 @@
         <form id="create-campground-form" class="hide">
             <input type="text" name="name" placeholder="Name"/>
             <input type="text" name="location" placeholder="Location (City, State)"/>
-            <input type="number" name="sites" placeholder="Number of Sites"/>
+            <!-- <input type="number" name="sites" placeholder="Number of Sites"/> -->
             <input type="submit" value="Create Campground" />
         </form>
         
     </section>
     
     <section id="campsite-container" class="hide">
-        <h2>Campsite</h2>
+        <h2 id="campsite-title">Campsite Details</h2>
         <img src="https://www.fs.usda.gov/Internet/FSE_MEDIA/fseprd923724.jpg" alt="Campsite" id="tent">
         <div id="index-campsite-container"></div> 
     </section>

@@ -42,11 +42,6 @@ const campgroundContainer = document.querySelector('#campground-container')
 // const createCampsiteForm = document.querySelector('#create-campsite-form')
 
 
-
-
-
-
-
 // Campground actions
 // indexCampgrounds()
 //     .then(res => res.json())
@@ -83,6 +78,7 @@ indexCampgroundsContainer.addEventListener('click', (event) => {
 		.then((res) => {
 			onShowCampgroundSuccess(res.campground)
 		})
+        .then(indexCampgrounds())
 		.catch(onFailure)
 })
 
@@ -101,7 +97,7 @@ showCampgroundContainer.addEventListener('submit', (event) => {
 
 	updateCampground(campgroundData, id)
 		.then(onUpdateCampgroundSuccess)
-        .then(indexCampgrounds())
+        .then(indexCampgrounds)
 		.catch(onFailure)
     
 })
