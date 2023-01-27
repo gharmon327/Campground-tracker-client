@@ -6,7 +6,7 @@ import {
 	updateCampground,
 	deleteCampground,
     createCampground,
-	indexCampsite,
+	// indexCampsite,
 	signUp,
 	signIn,
 	updateCampsite,
@@ -31,8 +31,12 @@ export const onIndexCampgroundSuccess = (campgrounds) => {
 	campgrounds.forEach((campground) => {
 		const div = document.createElement('div')
         div.classList.add('content-card')
+        const campsites = campground.campsite.map((campsite) => {
+            return campsite.siteNumber
+        })
 		div.innerHTML = `
             <h3>${campground.name} ${campground.location}</h3>
+            <h3>${campsites}</h3>
             <button type="button" class="btn btn-primary" data-id="${campground._id}">Select Campground</button>
         `
 		indexCampgroundsContainer.appendChild(div)
@@ -51,11 +55,17 @@ export const onCreateCampgroundSuccess = () => {
 }
 
 export const onShowCampgroundSuccess = (campground) => {
-    // indexContainer.classList.add('hide')
-    campsiteContainer.classList.remove('hide')
+    // campsiteContainer.classList.remove('hide')
     campgroundContainer.classList.add('hide')
     showCampgroundContainer.classList.remove('hide')
 	const div = document.createElement('div')
+    const campsites = campground.campsite.map((campsite) => {
+        const campsiteDiv = document.createElement('div')
+        campsiteDiv.innerHTML = `<h4>${campsite.siteNumber}</h4>
+        <button>update<button>`
+        return campsiteDiv 
+    })
+    console.log(campsites)
 	div.innerHTML = `
         <div class="row">
             <div class="col">
@@ -66,6 +76,7 @@ export const onShowCampgroundSuccess = (campground) => {
                 <h4>${campground.location}</h4>
                 <h3>Number of Campsites:</h3>
                 <h4>${campground.sites}</h4>
+                <div>${campsites}</div>
             </div>
             <div id="update-campground-form" class="hide">
                 <form data-id="${campground._id}">
@@ -78,13 +89,14 @@ export const onShowCampgroundSuccess = (campground) => {
             </div>
         </div>
         `
-        // window.top.location = window.top.location
+        console.log(campground)
+        // console.log(JSON.stringify(campground.campsite))
+        console.log(campground.campsite)
 	showCampgroundContainer.appendChild(div)
 }
 
 export const onUpdateCampgroundSuccess = () => {
 	messageContainer.innerHTML = 'You have updated a campground';
-    // indexContainer.classList.remove('hide')
     indexCampgrounds()
     campsiteContainer.classList.add('hide')
 }
@@ -93,7 +105,6 @@ export const onDeleteCampgroundSuccess = () => {
 	messageContainer.innerHTML = 'You have deleted a campground';
     campsiteContainer.classList.remove('hide')
     campgroundContainer.classList.remove('hide')
-    // window.top.location = window.top.location
 }
 
 // // User Actions
@@ -106,30 +117,25 @@ export const onSignInSuccess = (userToken) => {
     store.userToken = userToken
     console.log(userToken)
     authContainer.classList.add('hide')
-    // indexContainer.classList.remove('hide')
-    // campsiteContainer.classList.remove('hide')
     campgroundContainer.classList.remove('hide')
 }
 
 
 // Campsite Actions
-export const onIndexCampsiteSuccess = (campsites) => {
-    campsites.forEach((campsite) => {
-        const div = document.createElement('div')
-        div.classList.add('campsite')
-        div.innerHTML = `
-        <h3>Site Number:</h3>
-        <h4>${campsite.siteNumber}</h4>
-        <h3>Available:</h3>
-        <h4>${campsite.isOccupied}</h4>
-        <button data-id-campsite="${campsite._id}">Check In</button>
-        `
-        // if(`${campsite.isOccupied}` === true){
-        //     div.innerText = 'Yes'
-        // } else (div.innerText = 'No')
-        indexCampsiteContainer.appendChild(div)
-    });
-}
+// export const onIndexCampsiteSuccess = (campsites) => {
+//     campsites.forEach((campsite) => {
+//         const div = document.createElement('div')
+//         div.classList.add('campsite')
+//         div.innerHTML = `
+//         <h3>Site Number:</h3>
+//         <h4>${campsite.siteNumber}</h4>
+//         <h3>Available:</h3>
+//         <h4>${campsite.isOccupied}</h4>
+//         <button data-id-campsite="${campsite._id}">Check In</button>
+//         `
+//         indexCampsiteContainer.appendChild(div)
+//     });
+// }
 
 
 export const onCreateCampsiteSuccess = () => {
@@ -137,7 +143,6 @@ export const onCreateCampsiteSuccess = () => {
 }
 
 export const onShowCampsiteSuccess = (campsite) => {
-    // indexContainer.classList.add('hide')
     campsiteContainer.classList.add('hide')
     campgroundContainer.classList.add('hide')
 	showCampsiteContainer.classList.remove('hide')
@@ -164,6 +169,9 @@ export const onShowCampsiteSuccess = (campsite) => {
 
 export const onUpdateCampsiteSuccess = () => {
     messageCampsiteContainer.innerText = 'Update was successful :)';
+    // indexCampsite()
+    // onShowCampsiteSuccess(campsite)
+    // onShowCampgroundSuccess()
     // campgroundContainer.classList.add('hide')
     // window.location = window.location
 }
@@ -172,5 +180,5 @@ export const onUpdateCampsiteSuccess = () => {
 //     messageCampsiteContainer.innerText= 'Delete was successful :)'
 // }
 
-// <button data-id-campsite="${campsite._id}">Delete Campsite</button>
-/* <input type="text" name="siteNumber" value="${campsite.siteNumber}" /> */
+// // <button data-id-campsite="${campsite._id}">Delete Campsite</button>
+// /* <input type="text" name="siteNumber" value="${campsite.siteNumber}" /> */

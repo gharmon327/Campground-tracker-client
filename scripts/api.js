@@ -24,11 +24,12 @@ export const signIn = (data) => {
 }
 
 // Campground Actions
-export const indexCampgrounds = () => {
+export const indexCampgrounds = (data) => {
     return fetch(`http://localhost:8002/campgrounds`, {
 		headers: {
 			'Authorization': `Bearer ${store.userToken}`,
 		},
+        body: JSON.stringify(data),
 	})
 }
 
@@ -75,13 +76,13 @@ export const deleteCampground = (id) => {
 
 
 // Campsite Actions
-export const indexCampsite = () => {
-    return fetch(`http://localhost:8002/campsites`, {
-		headers: {
-			'Authorization': `Bearer ${store.userToken}`,
-		},
-	})
-}
+// export const indexCampsite = () => {
+//     return fetch(`http://localhost:8002/campsites`, {
+// 		headers: {
+// 			'Authorization': `Bearer ${store.userToken}`,
+// 		},
+// 	})
+// }
 
 export const createCampsite = (data) => {
     return fetch(`http://localhost:8002/campsites`, {

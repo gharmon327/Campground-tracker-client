@@ -4,11 +4,11 @@ import {
 	updateCampground,
 	deleteCampground,
     createCampground,
-	indexCampsite,
+	// indexCampsite,
 	signUp,
 	signIn,
-	updateCampsite,
-	showCampsite,
+	// updateCampsite,
+	// showCampsite,
 	// deleteCampsite,
     // createCampsite
 } from './api.js'
@@ -22,9 +22,9 @@ import {
 	onDeleteCampgroundSuccess,
 	onSignUpSuccess,
 	onSignInSuccess,
-	onIndexCampsiteSuccess,
-	onUpdateCampsiteSuccess,
-	onShowCampsiteSuccess,
+	// onIndexCampsiteSuccess,
+	// onUpdateCampsiteSuccess,
+	// onShowCampsiteSuccess,
 	// onDeleteCampsiteSuccess
 } from './ui.js'
 
@@ -58,10 +58,9 @@ createCampgroundForm.addEventListener('submit', (event) => {
         campground: {
             name: event.target['name'].value,
             location: event.target['location'].value,
-            sites: event.target['sites'].value,
+            // sites: event.target['sites'].value,
         }
     }
-    // console.log(characterData)
     createCampground(campgroundData)
     .then(onCreateCampgroundSuccess)
     .catch(onFailure)
@@ -78,7 +77,6 @@ indexCampgroundsContainer.addEventListener('click', (event) => {
 		.then((res) => {
 			onShowCampgroundSuccess(res.campground)
 		})
-        .then(indexCampgrounds())
 		.catch(onFailure)
 })
 
@@ -105,7 +103,6 @@ showCampgroundContainer.addEventListener('submit', (event) => {
 showCampgroundContainer.addEventListener('click', (event) => {
 	const id = event.target.getAttribute('data-id')
     campsiteContainer.classList.remove('hide')
-
 
 	if (!id) return
 
@@ -138,9 +135,9 @@ signInContainer.addEventListener('submit', (event) => {
 	signIn(userData)
 		.then((res) => res.json())
 		.then((res) => onSignInSuccess(res.token))
-		.then(indexCampsite)
-		.then((res) => res.json())
-		.then((res) => onIndexCampsiteSuccess(res.campsites))
+		// .then(indexCampsite)
+		// .then((res) => res.json())
+		// .then((res) => onIndexCampsiteSuccess(res.campsites))
 		.then(indexCampgrounds)
 		.then((res) => res.json())
 		.then((res) => onIndexCampgroundSuccess(res.campgrounds))
@@ -177,7 +174,6 @@ indexCampsiteContainer.addEventListener('click', (event) => {
     const id = event.target.getAttribute('data-id-campsite')
 
     if(!id) return
-    // console.log(id)
     showCampsite(id)
         .then((res) => res.json())
         .then((res) => onShowCampsiteSuccess(res.campsite))
@@ -199,7 +195,16 @@ showCampsiteContainer.addEventListener('submit', (event) => {
     if(!id) return
 
     updateCampsite(campsiteData, id)
+    .then(indexCampsite)
     .then(onUpdateCampsiteSuccess)
+    .then(showCampsite(id)
+        .then((res) => res.json())
+        .then((res) => onShowCampsiteSuccess(res.campsite)))
+        .then(indexCampgrounds)
+		.then((res) => res.json())
+		.then((res) => onIndexCampgroundSuccess(res.campgrounds))
+    // .then(showCampgroundContainer.classList.remove('hide'))
+    // .then(campsiteContainer.classList.remove('hide'))
     .catch(onFailure)
 })
 
@@ -213,6 +218,4 @@ showCampsiteContainer.addEventListener('click', (event) => {
     //     .catch(onFailure)
     })
 
-// homeButton.addEventListener('click', (e) => {
-//     window.location.reload()
-// })
+
