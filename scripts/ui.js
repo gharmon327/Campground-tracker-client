@@ -1,5 +1,17 @@
-import { signIn } from './api.js'
+
 import { store } from './store.js'
+import {
+	indexCampgrounds,
+	showCampground,
+	updateCampground,
+	deleteCampground,
+    createCampground,
+	indexCampsite,
+	signUp,
+	signIn,
+	updateCampsite,
+	showCampsite,
+} from './api.js'
 
 const indexCampgroundsContainer = document.querySelector('#index-campground-container')
 const messageContainer = document.querySelector('#message-container')
@@ -74,30 +86,15 @@ export const onShowCampgroundSuccess = (campground) => {
 export const onUpdateCampgroundSuccess = () => {
 	messageContainer.innerHTML = 'You have updated a campground';
     // indexContainer.classList.remove('hide')
-    // fetch(`http://localhost:8002/campgrounds`)
-    return fetch(`http://localhost:8002/campgrounds/${id}`, {
-		method: 'PATCH',
-		headers: {
-			'Accept': 'application/json',
-			'Content-Type': 'application/json',
-			'Authorization': `Bearer ${store.userToken}`
-		},
-		body: JSON.stringify(data),
-	})
-    .then(indexCampsite)
-		.then((res) => res.json())
-		.then((res) => onIndexCampsiteSuccess(res.campsites))
-		.then(indexCampgrounds)
-		.then((res) => res.json())
-		.then((res) => onIndexCampgroundSuccess(res.campgrounds))
-		.catch(onFailure)
+    indexCampgrounds()
+    campsiteContainer.classList.add('hide')
 }
 
 export const onDeleteCampgroundSuccess = () => {
 	messageContainer.innerHTML = 'You have deleted a campground';
     campsiteContainer.classList.remove('hide')
     campgroundContainer.classList.remove('hide')
-    window.top.location = window.top.location
+    // window.top.location = window.top.location
 }
 
 // // User Actions
@@ -122,7 +119,7 @@ export const onIndexCampsiteSuccess = (campsites) => {
         div.innerHTML = `
         <h3>Site Number:</h3>
         <h4>${campsite.siteNumber}</h4>
-        <h3>Occupied?:</h3>
+        <h3>Available:</h3>
         <h4>${campsite.isOccupied}</h4>
         <button data-id-campsite="${campsite._id}">Show Campsite</button>
         `
@@ -143,11 +140,13 @@ export const onShowCampsiteSuccess = (campsite) => {
     campsiteContainer.classList.add('hide')
     campgroundContainer.classList.add('hide')
 	showCampsiteContainer.classList.remove('hide')
+    showCampgroundContainer.classList.add('hide')
     const div = document.createElement('div')
     div.innerHTML = `
+    <h2>Campsite</h2>
     <h3>Site Number:</h3>
     <h4>${campsite.siteNumber}</h4>
-    <h3>Occupied?:</h3>
+    <h3>Available:</h3>
     <h4>${campsite.isOccupied}</h4>
     <p>${campsite._id}</p>
 

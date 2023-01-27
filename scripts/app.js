@@ -101,6 +101,7 @@ showCampgroundContainer.addEventListener('submit', (event) => {
 
 	updateCampground(campgroundData, id)
 		.then(onUpdateCampgroundSuccess)
+        .then(indexCampgrounds())
 		.catch(onFailure)
     
 })
