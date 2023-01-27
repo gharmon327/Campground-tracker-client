@@ -20,7 +20,7 @@ const indexContainer = document.querySelector('#index-container')
 const authContainer = document.querySelector('#auth-container')
 const campsiteContainer = document.querySelector('#campsite-container')
 const campgroundContainer = document.querySelector('#campground-container')
-
+const checkInBtn = document.querySelector('check-in')
 const indexCampsiteContainer = document.querySelector('#index-campsite-container')
 const messageCampsiteContainer = document.querySelector('#message-campsite-container')
 const showCampsiteContainer = document.querySelector('#show-campsite-container')
@@ -36,7 +36,7 @@ export const onIndexCampgroundSuccess = (campgrounds) => {
         })
 		div.innerHTML = `
             <h3>${campground.name} ${campground.location}</h3>
-            <h3>${campsites}</h3>
+           
             <button type="button" class="btn btn-primary" data-id="${campground._id}">Select Campground</button>
         `
 		indexCampgroundsContainer.appendChild(div)
@@ -54,6 +54,7 @@ export const onCreateCampgroundSuccess = () => {
     messageContainer.innerText = 'You have created a campground!! :)'
 }
 
+
 export const onShowCampgroundSuccess = (campground) => {
     // campsiteContainer.classList.remove('hide')
     campgroundContainer.classList.add('hide')
@@ -61,9 +62,26 @@ export const onShowCampgroundSuccess = (campground) => {
 	const div = document.createElement('div')
     const campsites = campground.campsite.map((campsite) => {
         const campsiteDiv = document.createElement('div')
-        campsiteDiv.innerHTML = `<h4>${campsite.siteNumber}</h4>
-        <button>update<button>`
-        return campsiteDiv 
+        campsiteDiv.classList.add('campsite-div')
+        campsiteDiv.innerHTML = `
+        <div id="campsite">
+        <h3>Site Number:</h3>
+        <h4>${campsite.siteNumber}</h4>
+        <h3>Available:</h3>
+        <h4>${campsite.isOccupied}</h4>
+        <h4>${campsite.campgroundId}</h4>
+        </div>
+        <form data-id="${campsite._id}">
+        <input class="form-control" type="number" name="siteNumber" value="${campsite.siteNumber}">
+        <input class="form-control" type="boolean" name="isOccupied" value="${campsite.isOccupied}">
+        <input type="text" name="campgroundId" value="${campsite.campgroundId}" />
+        <button type="submit" class="btn btn-warning">Update Campsite</button>
+    </form>
+        `
+        // return campsites
+        showCampsiteContainer.classList.remove('hide')
+        campsiteContainer.classList.remove('hide')
+        showCampsiteContainer.appendChild(campsiteDiv)
     })
     console.log(campsites)
 	div.innerHTML = `
@@ -76,16 +94,18 @@ export const onShowCampgroundSuccess = (campground) => {
                 <h4>${campground.location}</h4>
                 <h3>Number of Campsites:</h3>
                 <h4>${campground.sites}</h4>
-                <div>${campsites}</div>
+                <h4>${campground._id}</h4>
+
+                
             </div>
-            <div id="update-campground-form" class="hide">
+            <div id="update-campground-form">
                 <form data-id="${campground._id}">
                     <input class="form-control"class="form-control" type="text" name="name" value="${campground.name}">
                     <input class="form-control" type="text" name="location" value="${campground.location}">
                     <input class="form-control" type="text" name="sites" value="${campground.sites}">
                     <button type="submit" class="btn btn-warning">Update Campground</button>
+                    <button type="button" class="btn btn-danger" data-id="${campground._id}">Delete Campground</button>
                 </form>
-                <button type="button" class="btn btn-danger" data-id="${campground._id}">Delete Campground</button>
             </div>
         </div>
         `
@@ -154,11 +174,14 @@ export const onShowCampsiteSuccess = (campsite) => {
     <h4>${campsite.siteNumber}</h4>
     <h3>Available:</h3>
     <h4>${campsite.isOccupied}</h4>
+    <h4>${campsite.campgroundId}</h4>
+
     
 
     <form data-id-campsite="${campsite._id}">
         <input type="text" name="siteNumber" value="${campsite.siteNumber}" />
         <input type="text" name="isOccupied" value="${campsite.isOccupied}" />
+        <input type="text" name="campgroundId" value="${campsite.campgroundId}" />
         <input type="submit" value="Update Campsite" />
     </form>
 

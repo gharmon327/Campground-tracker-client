@@ -4,11 +4,11 @@ import {
 	updateCampground,
 	deleteCampground,
     createCampground,
-	// indexCampsite,
+	indexCampsite,
 	signUp,
 	signIn,
-	// updateCampsite,
-	// showCampsite,
+	updateCampsite,
+	showCampsite,
 	// deleteCampsite,
     // createCampsite
 } from './api.js'
@@ -23,7 +23,7 @@ import {
 	onSignUpSuccess,
 	onSignInSuccess,
 	// onIndexCampsiteSuccess,
-	// onUpdateCampsiteSuccess,
+	onUpdateCampsiteSuccess,
 	// onShowCampsiteSuccess,
 	// onDeleteCampsiteSuccess
 } from './ui.js'
@@ -36,6 +36,8 @@ const showCampsiteContainer = document.querySelector('#show-campsite-container')
 const signUpContainer = document.querySelector('#sign-up-form-container')
 const signInContainer = document.querySelector('#sign-in-form-container')
 const campsiteContainer = document.querySelector('#campsite-container')
+const checkInBtn = document.querySelector('#check-in')
+
 const indexContainer = document.querySelector('#index-container')
 const campgroundContainer = document.querySelector('#campground-container')
 
@@ -50,6 +52,7 @@ const campgroundContainer = document.querySelector('#campground-container')
 //         onIndexCampgroundSuccess(res.campgrounds)
 //     })
 //     .catch(onFailure)
+
 
 createCampgroundForm.addEventListener('submit', (event) => {
     event.preventDefault()
@@ -89,7 +92,7 @@ showCampgroundContainer.addEventListener('submit', (event) => {
 		campground: {
 			name: event.target['name'].value,
 			location: event.target['location'].value,
-			sites: event.target['sites'].value
+			sites: event.target['sites'].value,
 		},
 	}
 
@@ -170,39 +173,64 @@ signInContainer.addEventListener('submit', (event) => {
 //     .catch(onFailure)
 // })
 
+// checkInBtn.addEventListener('click', () => {
+//     console.log('its working')
+    // const id = event.target.getAttribute('data-id-campsite')
+
+    // const campsiteData = {
+    //     campsite: {
+    //         siteNumber: event.target['siteNumber'].value,
+    //         isOccupied: event.target['isOccupied'].value,
+    //     }
+    // }
+
+    // if(!id) return
+
+    // updateCampsite(campsiteData, id)
+    // .then(indexCampsite)
+    // .then(onUpdateCampsiteSuccess)
+    // .then(showCampsite(id)
+    // .then((res) => res.json())
+    // .then((res) => onShowCampsiteSuccess(res.campsite)))
+
+
 indexCampsiteContainer.addEventListener('click', (event) => {
     const id = event.target.getAttribute('data-id-campsite')
 
     if(!id) return
-    showCampsite(id)
-        .then((res) => res.json())
-        .then((res) => onShowCampsiteSuccess(res.campsite))
-        .catch(onFailure)
+    // showCampsite(id)
+    //     .then((res) => res.json())
+    //     .then((res) => onShowCampsiteSuccess(res.campsite))
+    //     .catch(onFailure)
 })
 
 showCampsiteContainer.addEventListener('submit', (event) => {
     event.preventDefault()
 
-    const id = event.target.getAttribute('data-id-campsite')
+    const id = event.target.getAttribute('data-id')
 
     const campsiteData = {
         campsite: {
             siteNumber: event.target['siteNumber'].value,
             isOccupied: event.target['isOccupied'].value,
+            campgroundId: event.target['campgroundId'].value,
         }
     }
 
+    console.log(campsiteData)
+    console.log(id)
     if(!id) return
 
     updateCampsite(campsiteData, id)
-    .then(indexCampsite)
-    .then(onUpdateCampsiteSuccess)
-    .then(showCampsite(id)
-        .then((res) => res.json())
-        .then((res) => onShowCampsiteSuccess(res.campsite)))
-        .then(indexCampgrounds)
-		.then((res) => res.json())
-		.then((res) => onIndexCampgroundSuccess(res.campgrounds))
+    .then(console.log(campsiteData))
+    // .then(indexCampsite)
+    // .then(onUpdateCampsiteSuccess)
+    // .then(showCampsite(id)
+    //     .then((res) => res.json())
+    //     .then((res) => onShowCampsiteSuccess(res.campsite)))
+        // .then(indexCampgrounds)
+		// .then((res) => res.json())
+		// .then((res) => onIndexCampgroundSuccess(res.campgrounds))
     // .then(showCampgroundContainer.classList.remove('hide'))
     // .then(campsiteContainer.classList.remove('hide'))
     .catch(onFailure)
