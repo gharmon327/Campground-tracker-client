@@ -58,3 +58,18 @@ button {
 #index-campsite-container {
     display: inline-flex;
 }
+
+#show-campground-container {
+    border: solid;
+    padding: 10px;
+}
+#message-campsite-container {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    color: green;
+}
+#message-container {
+    font-size: 30px;
+    color: green;
+}

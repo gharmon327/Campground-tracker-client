@@ -65,21 +65,22 @@ export const onShowCampgroundSuccess = (campground) => {
         campsiteDiv.classList.add('campsite-div')
         campsiteDiv.innerHTML = `
         <div id="campsite">
+        <h2 id="campsite-title">Campsite Details</h2>
         <h3>Site Number:</h3>
         <h4>${campsite.siteNumber}</h4>
         <h3>Available:</h3>
         <h4>${campsite.isOccupied}</h4>
-        <h4>${campsite.campgroundId}</h4>
         </div>
         <form data-id="${campsite._id}">
         <input class="form-control" type="number" name="siteNumber" value="${campsite.siteNumber}">
         <input class="form-control" type="boolean" name="isOccupied" value="${campsite.isOccupied}">
-        <input type="text" name="campgroundId" value="${campsite.campgroundId}" />
+        <input type="text" name="campgroundId" value="${campground._id}" />
         <button type="submit" class="btn btn-warning">Update Campsite</button>
     </form>
         `
         // return campsites
         showCampsiteContainer.classList.remove('hide')
+        // showCampgroundContainer.classList.add('hide')
         campsiteContainer.classList.remove('hide')
         showCampsiteContainer.appendChild(campsiteDiv)
     })
@@ -94,6 +95,7 @@ export const onShowCampgroundSuccess = (campground) => {
                 <h4>${campground.location}</h4>
                 <h3>Number of Campsites:</h3>
                 <h4>${campground.sites}</h4>
+                <h3>Campground ID</h3>
                 <h4>${campground._id}</h4>
 
                 
