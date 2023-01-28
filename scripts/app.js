@@ -8,9 +8,10 @@ import {
 	signUp,
 	signIn,
 	updateCampsite,
-	showCampsite,
+	// showCampsite,
 	// deleteCampsite,
-    // createCampsite
+    createCampsite,
+    showCampsite
 } from './api.js'
 
 import {
@@ -24,6 +25,7 @@ import {
 	onSignInSuccess,
 	// onIndexCampsiteSuccess,
 	onUpdateCampsiteSuccess,
+    onCreateCampsiteSuccess,
 	// onShowCampsiteSuccess,
 	// onDeleteCampsiteSuccess
 } from './ui.js'
@@ -36,6 +38,7 @@ const showCampsiteContainer = document.querySelector('#show-campsite-container')
 const signUpContainer = document.querySelector('#sign-up-form-container')
 const signInContainer = document.querySelector('#sign-in-form-container')
 const campsiteContainer = document.querySelector('#campsite-container')
+const createCampsiteForm = document.querySelector('#create-campsite-form')
 const back = document.querySelector('#back')
 
 const indexContainer = document.querySelector('#index-container')
@@ -54,9 +57,12 @@ const campgroundContainer = document.querySelector('#campground-container')
 //     .catch(onFailure)
 
 back.addEventListener('click', () => {
-    updateCampsite()
+    indexCampsite()
     // indexCampsite()
-    indexCampgrounds()
+    // .then(indexCampgrounds)
+    // .then((res) => res.json())
+    // .then((res) => onIndexCampgroundSuccess(res.campgrounds))
+    // .catch(onFailure)
     .then(campgroundContainer.classList.remove('hide'))
     .then(campsiteContainer.classList.add('hide'))
     .then(showCampgroundContainer.classList.add('hide'))
@@ -146,6 +152,7 @@ signInContainer.addEventListener('submit', (event) => {
 			password: event.target['password'].value,
 		},
 	}
+    console.log(userData)
 	signIn(userData)
 		.then((res) => res.json())
 		.then((res) => onSignInSuccess(res.token))
@@ -169,20 +176,21 @@ signInContainer.addEventListener('submit', (event) => {
 //     })
 //     .catch(onFailure)
 
-// createCampsiteForm.addEventListener('submit', (event) => {
-//     event.preventDefault()
+createCampsiteForm.addEventListener('submit', (event) => {
+    event.preventDefault()
 
-//     const campsiteData = {
-//         campsite: {
-//             siteNumber: event.target['siteNumber'].value,
-//             isOccupied: event.target['isOccupied'].value
-//         }
-//     }
-//     // console.log(characterData)
-//     createCampsite(campsiteData)
-//     .then(onCreateCampsiteSuccess)
-//     .catch(onFailure)
-// })
+    const campsiteData = {
+        campsite: {
+            siteNumber: event.target['siteNumber'].value,
+            isOccupied: event.target['isOccupied'].value,
+            campgroundId: event.target['campgroundId'].value
+        }
+    }
+    // console.log(characterData)
+    createCampsite(campsiteData)
+    .then(onCreateCampsiteSuccess)
+    .catch(onFailure)
+})
 
 // checkInBtn.addEventListener('click', () => {
 //     console.log('its working')

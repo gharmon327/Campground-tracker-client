@@ -65,10 +65,10 @@ export const onShowCampgroundSuccess = (campground) => {
         campsiteDiv.classList.add('campsite-div')
         campsiteDiv.innerHTML = `
         <div id="campsite">
-        <h2 id="campsite-title">Campsite Details</h2>
-        <h3>Site Number:</h3>
+        <h2 id="campsite-title" class="text-success">Campsite Details</h2>
+        <h3 class="text-success">Site Number:</h3>
         <h4>${campsite.siteNumber}</h4>
-        <h3>Available:</h3>
+        <h3 class="text-success">Available:</h3>
         <h4>${campsite.isOccupied}</h4>
         </div>
         <form data-id="${campsite._id}">
@@ -88,14 +88,14 @@ export const onShowCampgroundSuccess = (campground) => {
 	div.innerHTML = `
         <div class="row">
             <div class="col">
-                <h2 id="Campground-title">Campground Details</h2>
-                <h3>Campground Name:</h3>
+                <h2 id="Campground-title" class="text-success">Campground Details (Scroll down for campsite details)</h2>
+                <h3 class="text-success">Campground Name:</h3>
                 <h4>${campground.name}</h4>
-                <h3>Location:</h3>
+                <h3 class="text-success">Location:</h3>
                 <h4>${campground.location}</h4>
-                <h3>Number of Campsites:</h3>
+                <h3 class="text-success">Number of Campsites:</h3>
                 <h4>${campground.sites}</h4>
-                <h3>Campground ID</h3>
+                <h3 class="text-success">Campground ID</h3>
                 <h4>${campground._id}</h4>
 
                 
@@ -119,7 +119,11 @@ export const onShowCampgroundSuccess = (campground) => {
 
 export const onUpdateCampgroundSuccess = () => {
 	messageContainer.innerHTML = 'You have updated a campground';
-    indexCampgrounds()
+    // while(showCampgroundContainer.firstChild){
+    //     showCampgroundContainer.removeChild(showCampgroundContainer.lastChild)
+    // }
+    
+
     campsiteContainer.classList.add('hide')
 }
 

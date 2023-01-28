@@ -1,7 +1,24 @@
 .hide {
     display: none;
 }
+main {
+    margin: 5px;
+}
 
+.content-container{
+    display: flex;
+    height: 250px;
+    color: rgb(89,113,78);
+}
+
+.content-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 33%;
+    flex-direction: column;
+    color: rgb(89,113,78);
+}
 body {
     background-color: lightgray;
     padding: 30px;
