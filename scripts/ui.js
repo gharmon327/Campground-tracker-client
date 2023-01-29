@@ -11,6 +11,7 @@ import {
 	signIn,
 	updateCampsite,
 	showCampsite,
+    createCampsite,
 } from './api.js'
 
 const indexCampgroundsContainer = document.querySelector('#index-campground-container')
@@ -24,6 +25,7 @@ const checkInBtn = document.querySelector('check-in')
 const indexCampsiteContainer = document.querySelector('#index-campsite-container')
 const messageCampsiteContainer = document.querySelector('#message-campsite-container')
 const showCampsiteContainer = document.querySelector('#show-campsite-container')
+const createCampsiteForm = document.querySelector('#create-campsite-form')
 
 
 // Campground Actions
@@ -52,6 +54,8 @@ export const onFailure = (error) => {
 
 export const onCreateCampgroundSuccess = () => {
     messageContainer.innerText = 'You have created a campground!! :)'
+    // campgroundContainer.classList.remove('hide')
+    // createCampsiteForm.classList.remove('hide')
 }
 
 
@@ -59,6 +63,7 @@ export const onShowCampgroundSuccess = (campground) => {
     // campsiteContainer.classList.remove('hide')
     campgroundContainer.classList.add('hide')
     showCampgroundContainer.classList.remove('hide')
+    messageCampsiteContainer.innerText = ''
 	const div = document.createElement('div')
     const campsites = campground.campsite.map((campsite) => {
         const campsiteDiv = document.createElement('div')
@@ -124,13 +129,13 @@ export const onUpdateCampgroundSuccess = () => {
     // }
     
 
-    campsiteContainer.classList.add('hide')
+    // campsiteContainer.classList.add('hide')
 }
 
 export const onDeleteCampgroundSuccess = () => {
 	messageContainer.innerHTML = 'You have deleted a campground';
     campsiteContainer.classList.remove('hide')
-    campgroundContainer.classList.remove('hide')
+    // campgroundContainer.classList.remove('hide')
 }
 
 // // User Actions

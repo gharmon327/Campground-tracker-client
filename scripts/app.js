@@ -40,10 +40,11 @@ const signInContainer = document.querySelector('#sign-in-form-container')
 const campsiteContainer = document.querySelector('#campsite-container')
 const createCampsiteForm = document.querySelector('#create-campsite-form')
 const back = document.querySelector('#back')
-
+const save = document.querySelector('#save')
 const indexContainer = document.querySelector('#index-container')
 const campgroundContainer = document.querySelector('#campground-container')
-
+const messageCampsiteContainer = document.querySelector('#message-campsite-container')
+const messageContainer = document.querySelector('#message-container')
 // const createCampsiteForm = document.querySelector('#create-campsite-form')
 
 
@@ -57,18 +58,52 @@ const campgroundContainer = document.querySelector('#campground-container')
 //     .catch(onFailure)
 
 back.addEventListener('click', () => {
-    indexCampsite()
-    // indexCampsite()
-    // .then(indexCampgrounds)
-    // .then((res) => res.json())
-    // .then((res) => onIndexCampgroundSuccess(res.campgrounds))
-    // .catch(onFailure)
+    while(indexCampgroundsContainer.firstChild){
+        indexCampgroundsContainer.removeChild(indexCampgroundsContainer.lastChild)
+    }
+    while(showCampsiteContainer.firstChild){
+        showCampsiteContainer.removeChild(showCampsiteContainer.lastChild)
+    }
+    while(showCampgroundContainer.firstChild){
+        showCampgroundContainer.removeChild(showCampgroundContainer.lastChild)
+    }
+    messageCampsiteContainer.innerText = ''
+    messageContainer.innerText = ''
+    indexCampgrounds()
+    .then(res => res.json())
+    .then(res => {
+        console.log(res)
+        onIndexCampgroundSuccess(res.campgrounds)
+    })
     .then(campgroundContainer.classList.remove('hide'))
     .then(campsiteContainer.classList.add('hide'))
     .then(showCampgroundContainer.classList.add('hide'))
     .then(showCampsiteContainer.classList.add('hide'))
 })
 
+save.addEventListener('click', () => {
+    while(indexCampgroundsContainer.firstChild){
+        indexCampgroundsContainer.removeChild(indexCampgroundsContainer.lastChild)
+    }
+    while(showCampsiteContainer.firstChild){
+        showCampsiteContainer.removeChild(showCampsiteContainer.lastChild)
+    }
+    while(showCampgroundContainer.firstChild){
+        showCampgroundContainer.removeChild(showCampgroundContainer.lastChild)
+    }
+    messageCampsiteContainer.innerText = ''
+    messageContainer.innerText = ''
+indexCampgrounds()
+    .then(res => res.json())
+    .then(res => {
+        console.log(res)
+        onIndexCampgroundSuccess(res.campgrounds)
+    })
+    .then(campgroundContainer.classList.remove('hide'))
+    .then(campsiteContainer.classList.add('hide'))
+    .then(showCampgroundContainer.classList.add('hide'))
+    .then(showCampsiteContainer.classList.add('hide'))
+})
 
 createCampgroundForm.addEventListener('submit', (event) => {
     event.preventDefault()
@@ -77,11 +112,27 @@ createCampgroundForm.addEventListener('submit', (event) => {
         campground: {
             name: event.target['name'].value,
             location: event.target['location'].value,
-            // sites: event.target['sites'].value,
+            sites: event.target['sites'].value,
         }
     }
+    while(campgroundContainer.firstChild){
+        campgroundContainer.removeChild(campgroundContainer.lastChild)
+    }
+    while(campgroundContainer.firstChild){
+        campgroundContainer.appendChild(campgroundContainer.lastChild)
+    }
+   
+
     createCampground(campgroundData)
     .then(onCreateCampgroundSuccess)
+    .then(indexCampgrounds)
+    .then((res) => res.json())
+    .then((res) => onIndexCampgroundSuccess(res.campgrounds))
+    .then(createCampsiteForm.classList.remove('hide'))
+    .then(campsiteContainer.classList.remove('hide'))
+    .then(campgroundContainer.classList.remove('hide'))
+    // .then(onShowCampgroundSuccess)
+    // .catch(onFailure)
     .catch(onFailure)
 })
 
