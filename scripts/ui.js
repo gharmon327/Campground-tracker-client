@@ -116,6 +116,11 @@ export const onDeleteCampgroundSuccess = () => {
     campsiteContainer.classList.add('hide')
 }
 
+export const onDeleteCampgroundFailure = () => {
+	messageContainer.innerHTML = 'You must be the owner to delete a campground';
+    campsiteContainer.classList.add('hide')
+}
+
 // // User Actions
 export const onSignUpSuccess = () => {
     messageContainer.innerHTML = 'You\'ve created a new user! Now Sign In'

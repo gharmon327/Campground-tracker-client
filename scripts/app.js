@@ -19,6 +19,7 @@ import {
     onCreateCampgroundSuccess,
 	onUpdateCampgroundSuccess,
 	onDeleteCampgroundSuccess,
+    onDeleteCampgroundFailure,
 	onSignUpSuccess,
 	onSignInSuccess,
 	onUpdateCampsiteSuccess,
@@ -119,6 +120,7 @@ createCampgroundForm.addEventListener('submit', (event) => {
     .then(createCampsiteForm.classList.remove('hide'))
     .then(campgroundContainer.classList.remove('hide'))
     .then(indexCampgroundsContainer.classList.remove('hide'))
+    // .then(campsiteContainer.classList.remove('hide'))
     .catch(onFailure)
 })
 
@@ -138,6 +140,7 @@ indexCampgroundsContainer.addEventListener('click', (event) => {
 
 showCampgroundContainer.addEventListener('submit', (event) => {
 	event.preventDefault()
+    campsiteContainer.classList.remove('hide')
     
 	const id = event.target.getAttribute('data-id')
 	const campgroundData = {
@@ -157,13 +160,22 @@ showCampgroundContainer.addEventListener('submit', (event) => {
 
 showCampgroundContainer.addEventListener('click', (event) => {
 	const id = event.target.getAttribute('data-id')
+    // const campground = body.campground
+    // owner = campground.owner
+    // user = req.user._id
     campsiteContainer.classList.remove('hide')
 
 	if (!id) return
+    // if(Response.ok){
 
 	deleteCampground(id)
+    // .then((response) => {
+    //     console.log(response.ok)})
 		.then(onDeleteCampgroundSuccess)
 		.catch(onFailure)
+    // }else{
+
+    // onDeleteCampgroundFailure
 })
 
 
