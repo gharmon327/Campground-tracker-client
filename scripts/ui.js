@@ -101,12 +101,14 @@ export const onShowCampgroundSuccess = (campground) => {
         </div>
         `
         console.log(campground)
+        // console.log(req.user._id)
         console.log(campground.campsite)
 	showCampgroundContainer.appendChild(div)
 }
 
 export const onUpdateCampgroundSuccess = () => {
 	messageContainer.innerHTML = 'You have updated a campground';
+    campsiteContainer.classList.add('hide')
 }
 
 export const onDeleteCampgroundSuccess = () => {
@@ -178,7 +180,8 @@ export const onShowCampsiteSuccess = (campsite) => {
 }
 
 export const onUpdateCampsiteSuccess = () => {
-    messageCampsiteContainer.innerText = 'Update was successful :)';
+    messageCampsiteContainer.innerText = 'Update was successful, You may continue updating then click save :)';
+    // campsiteContainer.classList.add('hide')
     // indexCampsite()
     // onShowCampsiteSuccess(campsite)
     // onShowCampgroundSuccess()
