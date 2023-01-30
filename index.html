@@ -16,8 +16,7 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-            <a class="text-success" href="#" >Campground Tracker</a>
+        <div class="container-fluid" id="navbar">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -89,18 +88,24 @@
         <div id="index-campsite-container" class="content-container"></div>></div> 
         <!-- <button id="back">BACK</button>
         <button id="save">SAVE</button> -->
-        <div id="message-campsite-container"></div>
-    </section>
-    <!-- </main> -->
-
-    <div id="message-container"></div>
-    <div id="show-campground-container" class="hide">
         <form id="create-campsite-form">
             <input type="text" name="siteNumber" placeholder="Site Number"/>
             <input type="text" name="isOccupied" placeholder="Available?(true/false)"/>
             <input type="text" name="campgroundId" placeholder="Campground ID"/>
             <input type="submit" value="Create Campsite" />
         </form>
+        <div id="message-campsite-container"></div>
+    </section>
+    <!-- </main> -->
+
+    <div id="message-container"></div>
+    <div id="show-campground-container" class="hide">
+        <!-- <form id="create-campsite-form">
+            <input type="text" name="siteNumber" placeholder="Site Number"/>
+            <input type="text" name="isOccupied" placeholder="Available?(true/false)"/>
+            <input type="text" name="campgroundId" placeholder="Campground ID"/>
+            <input type="submit" value="Create Campsite" />
+        </form> -->
     </div>
     <div id="show-campsite-container" class="hide"></div>
    

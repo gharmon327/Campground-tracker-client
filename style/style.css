@@ -50,10 +50,6 @@ h3 {
     padding-top: 10px;
 }
 
-#sign-in-form-container {
-    padding-bottom: 10px;
-}
-
 
 #campground-container {
     border: 2px solid black;
@@ -65,12 +61,6 @@ button {
     color: blue;
 }
 
-#tent {
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    padding-left: 50px;
-}
 
 #index-campsite-container {
     display: inline-flex;
