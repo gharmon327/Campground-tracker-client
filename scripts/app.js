@@ -8,8 +8,6 @@ import {
 	signIn,
 	updateCampsite,
     createCampsite,
-    // deleteCampsite,
-    showCampsite,
 } from './api.js'
 
 import {
@@ -19,12 +17,10 @@ import {
     onCreateCampgroundSuccess,
 	onUpdateCampgroundSuccess,
 	onDeleteCampgroundSuccess,
-    onDeleteCampgroundFailure,
 	onSignUpSuccess,
 	onSignInSuccess,
 	onUpdateCampsiteSuccess,
     onCreateCampsiteSuccess,
-    // onDeleteCampsiteSuccess
 } from './ui.js'
 
 const indexCampgroundsContainer = document.querySelector('#index-campground-container')
@@ -38,22 +34,12 @@ const campsiteContainer = document.querySelector('#campsite-container')
 const createCampsiteForm = document.querySelector('#create-campsite-form')
 const back = document.querySelector('#back')
 const save = document.querySelector('#save')
-const signout = document.querySelector('#sign-out')
 const campgroundContainer = document.querySelector('#campground-container')
 const messageCampsiteContainer = document.querySelector('#message-campsite-container')
 const messageContainer = document.querySelector('#message-container')
 
 
 // Campground actions
-// indexCampgrounds()
-//     .then(res => res.json())
-//     .then(res => {
-//         console.log(res)
-//         onIndexCampgroundSuccess(res.campgrounds)
-//     })
-//     .catch(onFailure)
-
-
 back.addEventListener('click', () => {
     while(indexCampgroundsContainer.firstChild){
         indexCampgroundsContainer.removeChild(indexCampgroundsContainer.lastChild)
@@ -69,7 +55,6 @@ back.addEventListener('click', () => {
     indexCampgrounds()
     .then(res => res.json())
     .then(res => {
-        console.log(res)
         onIndexCampgroundSuccess(res.campgrounds)
     })
     .then(campgroundContainer.classList.remove('hide'))
@@ -92,7 +77,6 @@ save.addEventListener('click', () => {
 indexCampgrounds()
     .then(res => res.json())
     .then(res => {
-        console.log(res)
         onIndexCampgroundSuccess(res.campgrounds)
     })
     .then(campgroundContainer.classList.remove('hide'))
@@ -122,7 +106,6 @@ createCampgroundForm.addEventListener('submit', (event) => {
     .then(createCampsiteForm.classList.remove('hide'))
     .then(campgroundContainer.classList.remove('hide'))
     .then(indexCampgroundsContainer.classList.remove('hide'))
-    // .then(campsiteContainer.classList.remove('hide'))
     .catch(onFailure)
 })
 
@@ -162,22 +145,13 @@ showCampgroundContainer.addEventListener('submit', (event) => {
 
 showCampgroundContainer.addEventListener('click', (event) => {
 	const id = event.target.getAttribute('data-id')
-    // const campground = body.campground
-    // owner = campground.owner
-    // user = req.user._id
     campsiteContainer.classList.remove('hide')
 
 	if (!id) return
-    // if(Response.ok){
 
 	deleteCampground(id)
-    // .then((response) => {
-    //     console.log(response.ok)})
 		.then(onDeleteCampgroundSuccess)
 		.catch(onFailure)
-    // }else{
-
-    // onDeleteCampgroundFailure
 })
 
 
@@ -201,7 +175,6 @@ signInContainer.addEventListener('submit', (event) => {
 			password: event.target['password'].value,
 		},
 	}
-    console.log(userData)
 	signIn(userData)
 		.then((res) => res.json())
 		.then((res) => onSignInSuccess(res.token))
@@ -214,13 +187,6 @@ signInContainer.addEventListener('submit', (event) => {
 
 
 // Campsite Actions
-// indexCampsite()
-//     .then(res => res.json())
-//     .then(res => {
-//         console.log(res)
-//         onIndexCampsiteSuccess(res.campsites)
-//     })
-//     .catch(onFailure)
 
 createCampsiteForm.addEventListener('submit', (event) => {
     event.preventDefault()
@@ -243,10 +209,6 @@ indexCampsiteContainer.addEventListener('click', (event) => {
     const id = event.target.getAttribute('data-id-campsite')
 
     if(!id) return
-    // showCampsite(id)
-    //     .then((res) => res.json())
-    //     .then((res) => onShowCampsiteSuccess(res.campsite))
-    //     .catch(onFailure)
 })
 
 showCampsiteContainer.addEventListener('submit', (event) => {
@@ -262,12 +224,9 @@ showCampsiteContainer.addEventListener('submit', (event) => {
         }
     }
 
-    console.log(campsiteData)
-    console.log(id)
     if(!id) return
 
     updateCampsite(campsiteData, id)
-    .then(console.log(campsiteData))
     .then(onUpdateCampsiteSuccess)
     .then(showCampgroundContainer.classList.add('hide'))
     .catch(onFailure)
@@ -277,10 +236,6 @@ showCampsiteContainer.addEventListener('click', (event) => {
     const id = event.target.getAttribute('data-id-campsite')
 
     if(!id) return
-
-    // deleteCampsite(id)
-    //     .then(onDeleteCampsiteSuccess)
-    //     .catch(onFailure)
     })
 
 

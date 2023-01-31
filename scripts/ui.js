@@ -8,7 +8,6 @@ const showCampgroundContainer = document.querySelector('#show-campground-contain
 const authContainer = document.querySelector('#auth-container')
 const campsiteContainer = document.querySelector('#campsite-container')
 const campgroundContainer = document.querySelector('#campground-container')
-const indexCampsiteContainer = document.querySelector('#index-campsite-container')
 const messageCampsiteContainer = document.querySelector('#message-campsite-container')
 const showCampsiteContainer = document.querySelector('#show-campsite-container')
 const createCampsiteForm = document.querySelector('#create-campsite-form')
@@ -73,7 +72,6 @@ export const onShowCampgroundSuccess = (campground) => {
         campsiteContainer.classList.remove('hide')
         showCampsiteContainer.appendChild(campsiteDiv)
     })
-    console.log(campsites)
 	div.innerHTML = `
         <div class="row">
             <div class="col">
@@ -100,9 +98,7 @@ export const onShowCampgroundSuccess = (campground) => {
             </div>
         </div>
         `
-        console.log(campground)
-        // console.log(req.user._id)
-        console.log(campground.campsite)
+        
 	showCampgroundContainer.appendChild(div)
 }
 
@@ -129,27 +125,13 @@ export const onSignUpSuccess = () => {
 export const onSignInSuccess = (userToken) => {
     messageContainer.innerHTML = ''
     store.userToken = userToken
-    console.log(userToken)
     authContainer.classList.add('hide')
     campgroundContainer.classList.remove('hide')
 }
 
 
 // Campsite Actions
-// export const onIndexCampsiteSuccess = (campsites) => {
-//     campsites.forEach((campsite) => {
-//         const div = document.createElement('div')
-//         div.classList.add('campsite')
-//         div.innerHTML = `
-//         <h3>Site Number:</h3>
-//         <h4>${campsite.siteNumber}</h4>
-//         <h3>Available:</h3>
-//         <h4>${campsite.isOccupied}</h4>
-//         <button data-id-campsite="${campsite._id}">Check In</button>
-//         `
-//         indexCampsiteContainer.appendChild(div)
-//     });
-// }
+
 
 
 export const onCreateCampsiteSuccess = () => {
@@ -186,12 +168,7 @@ export const onShowCampsiteSuccess = (campsite) => {
 
 export const onUpdateCampsiteSuccess = () => {
     messageCampsiteContainer.innerText = 'Update was successful, You may continue updating then click save :)';
-    // campsiteContainer.classList.add('hide')
-    // indexCampsite()
-    // onShowCampsiteSuccess(campsite)
-    // onShowCampgroundSuccess()
-    // campgroundContainer.classList.add('hide')
-    // window.location = window.location
+   
 }
 
 export const onDeleteCampsiteSuccess = () => {
