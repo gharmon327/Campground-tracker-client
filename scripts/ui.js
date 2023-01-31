@@ -107,12 +107,12 @@ export const onShowCampgroundSuccess = (campground) => {
 }
 
 export const onUpdateCampgroundSuccess = () => {
-	messageContainer.innerHTML = 'You have updated a campground';
+	messageContainer.innerHTML = 'Click save to continue';
     campsiteContainer.classList.add('hide')
 }
 
 export const onDeleteCampgroundSuccess = () => {
-	messageContainer.innerHTML = 'You have deleted a campground';
+	messageContainer.innerHTML = 'Click save to continue';
     campsiteContainer.classList.add('hide')
 }
 

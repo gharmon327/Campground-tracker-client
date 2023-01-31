@@ -38,6 +38,7 @@ const campsiteContainer = document.querySelector('#campsite-container')
 const createCampsiteForm = document.querySelector('#create-campsite-form')
 const back = document.querySelector('#back')
 const save = document.querySelector('#save')
+const signout = document.querySelector('#sign-out')
 const campgroundContainer = document.querySelector('#campground-container')
 const messageCampsiteContainer = document.querySelector('#message-campsite-container')
 const messageContainer = document.querySelector('#message-container')
@@ -51,6 +52,7 @@ const messageContainer = document.querySelector('#message-container')
 //         onIndexCampgroundSuccess(res.campgrounds)
 //     })
 //     .catch(onFailure)
+
 
 back.addEventListener('click', () => {
     while(indexCampgroundsContainer.firstChild){

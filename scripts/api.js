@@ -2,7 +2,7 @@ import { store } from './store.js'
 
 // User actions
 export const signUp = (data) => {
-	return fetch(`http://localhost:8002/sign-up`, {
+	return fetch(`https://whispering-beach-23651.herokuapp.com/sign-up`, {
 		method: 'POST',
 		headers: {
 			'Accept': 'application/json',
@@ -13,7 +13,7 @@ export const signUp = (data) => {
 }
 
 export const signIn = (data) => {
-	return fetch(`http://localhost:8002/sign-in`, {
+	return fetch(`https://whispering-beach-23651.herokuapp.com/sign-in`, {
 		method: 'POST',
 		headers: {
 			'Accept': 'application/json',
@@ -25,7 +25,7 @@ export const signIn = (data) => {
 
 // Campground Actions
 export const indexCampgrounds = (data) => {
-    return fetch(`http://localhost:8002/campgrounds`, {
+    return fetch(`https://whispering-beach-23651.herokuapp.com/campgrounds`, {
 		headers: {
 			'Authorization': `Bearer ${store.userToken}`,
 		},
@@ -34,7 +34,7 @@ export const indexCampgrounds = (data) => {
 }
 
 export const createCampground = (data) => {
-    return fetch(`http://localhost:8002/campgrounds`, {
+    return fetch(`https://whispering-beach-23651.herokuapp.com/campgrounds`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -46,7 +46,7 @@ export const createCampground = (data) => {
 }
 
 export const showCampground = (id) => {
-	return fetch(`http://localhost:8002/campgrounds/${id}`, {
+	return fetch(`https://whispering-beach-23651.herokuapp.com/${id}`, {
 		headers: {
 			'Authorization': `Bearer ${store.userToken}`,
 		},
@@ -54,7 +54,7 @@ export const showCampground = (id) => {
 }
 
 export const updateCampground = (data, id) => {
-	return fetch(`http://localhost:8002/campgrounds/${id}`, {
+	return fetch(`https://whispering-beach-23651.herokuapp.com/${id}`, {
 		method: 'PATCH',
 		headers: {
 			'Accept': 'application/json',
@@ -66,7 +66,7 @@ export const updateCampground = (data, id) => {
 }
 
 export const deleteCampground = (id) => {
-	return fetch(`http://localhost:8002/campgrounds/${id}`, {
+	return fetch(`https://whispering-beach-23651.herokuapp.com/${id}`, {
 		method: 'DELETE',
 		headers: {
 			Authorization: `Bearer ${store.userToken}`,
@@ -77,7 +77,7 @@ export const deleteCampground = (id) => {
 
 // Campsite Actions
 export const indexCampsite = () => {
-    return fetch(`http://localhost:8002/campsites`, {
+    return fetch(`https://whispering-beach-23651.herokuapp.com/campsites`, {
 		headers: {
 			'Authorization': `Bearer ${store.userToken}`,
 		},
@@ -85,7 +85,7 @@ export const indexCampsite = () => {
 }
 
 export const createCampsite = (data) => {
-    return fetch(`http://localhost:8002/campsites`, {
+    return fetch(`https://whispering-beach-23651.herokuapp.com/campsites`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -97,7 +97,7 @@ export const createCampsite = (data) => {
 }
 
 export const showCampsite = (id) => {
-    return fetch(`http://localhost:8002/campsites/${id}`, {
+    return fetch(`https://whispering-beach-23651.herokuapp.com/${id}`, {
 		headers: {
 			'Authorization': `Bearer ${store.userToken}`,
 		},
@@ -105,7 +105,7 @@ export const showCampsite = (id) => {
 }
 
 export const updateCampsite = (data, id) => {
-    return fetch(`http://localhost:8002/campsites/${id}`, {
+    return fetch(`https://whispering-beach-23651.herokuapp.com/${id}`, {
         method: 'PATCH',
         headers: {
             'Accept': 'application/json',
@@ -117,7 +117,7 @@ export const updateCampsite = (data, id) => {
 }
 
 export const deleteCampsite = (id) => {
-    return fetch(`http://localhost:8002/campsites/${id}`, {
+    return fetch(`https://whispering-beach-23651.herokuapp.com/${id}`, {
         method: 'DELETE',
         headers: {
 			Authorization: `Bearer ${store.userToken}`,
