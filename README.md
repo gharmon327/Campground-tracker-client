@@ -17,7 +17,7 @@
 - Mongoose
 
 ## Getting Started
-- The Campground tracker is an app that is meant for new or existing campground owners to have a place to keep track of the status of their campground/campsites. Any campground owner can create a log to add their campground. Campground owners can add their campsites associated with their campground. Only the owner can delete or update the campground. Guests can log in to see the different campgrounds and campsites and their availability. When guests arrive or depart, they can check themselves in/out, or when owners see guests arriving or departing, they can check them in or out. Link to WEBSITE here.
+- The Campground tracker is an app that is meant for new or existing campground owners to have a place to keep track of the status of their campground/campsites. Any campground owner can create a log to add their campground. Campground owners can add their campsites associated with their campground. Only the owner can delete or update the campground. Guests can log in to see the different campgrounds and campsites and their availability. When guests arrive or depart, they can check themselves in/out, or when owners see guests arriving or departing, they can check them in or out. Check out my app here [Campground Tracker](https://gharmon327.github.io/Campground-tracker-client/)
 
 
 ## Next Steps
