@@ -46,7 +46,7 @@ export const createCampground = (data) => {
 }
 
 export const showCampground = (id) => {
-	return fetch(`https://whispering-beach-23651.herokuapp.com/${id}`, {
+	return fetch(`https://whispering-beach-23651.herokuapp.com/campgrounds/${id}`, {
 		headers: {
 			'Authorization': `Bearer ${store.userToken}`,
 		},
@@ -54,7 +54,7 @@ export const showCampground = (id) => {
 }
 
 export const updateCampground = (data, id) => {
-	return fetch(`https://whispering-beach-23651.herokuapp.com/${id}`, {
+	return fetch(`https://whispering-beach-23651.herokuapp.com/campgrounds/${id}`, {
 		method: 'PATCH',
 		headers: {
 			'Accept': 'application/json',
@@ -66,7 +66,7 @@ export const updateCampground = (data, id) => {
 }
 
 export const deleteCampground = (id) => {
-	return fetch(`https://whispering-beach-23651.herokuapp.com/${id}`, {
+	return fetch(`https://whispering-beach-23651.herokuapp.com/campgrounds/${id}`, {
 		method: 'DELETE',
 		headers: {
 			Authorization: `Bearer ${store.userToken}`,
@@ -97,7 +97,7 @@ export const createCampsite = (data) => {
 }
 
 export const showCampsite = (id) => {
-    return fetch(`https://whispering-beach-23651.herokuapp.com/${id}`, {
+    return fetch(`https://whispering-beach-23651.herokuapp.com/campsites/${id}`, {
 		headers: {
 			'Authorization': `Bearer ${store.userToken}`,
 		},
@@ -105,7 +105,7 @@ export const showCampsite = (id) => {
 }
 
 export const updateCampsite = (data, id) => {
-    return fetch(`https://whispering-beach-23651.herokuapp.com/${id}`, {
+    return fetch(`https://whispering-beach-23651.herokuapp.com/campsites/${id}`, {
         method: 'PATCH',
         headers: {
             'Accept': 'application/json',
@@ -117,7 +117,7 @@ export const updateCampsite = (data, id) => {
 }
 
 export const deleteCampsite = (id) => {
-    return fetch(`https://whispering-beach-23651.herokuapp.com/${id}`, {
+    return fetch(`https://whispering-beach-23651.herokuapp.com/campsites/${id}`, {
         method: 'DELETE',
         headers: {
 			Authorization: `Bearer ${store.userToken}`,
