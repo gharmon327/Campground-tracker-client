@@ -1,7 +1,10 @@
 # Campground-tracker-client
 
 ## Screenshots
-![Campground Wireframe](images/Project%202%20(1).png)
+![Log In Page](images/log-in.png)
+![Campground](images/campgrounds.png)
+![Campground Details](images/campground-details.png)
+![Campsite](images/campsite.png)
 
 ## Technologies Used
 - Javascript
